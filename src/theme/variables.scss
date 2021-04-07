@@ -2,7 +2,15 @@
 // http://ionicframework.com/docs/theming/
 
 /** Ionic CSS Variables **/
+:root[mode=ios].nunito,
+:root[mode=md].nunito{
+  --ion-font-family:'Nunito' !important;
+  font-family: 'Nunito' !important;
+
+}
+
 :root {
+  --ion-font-family: 'Nunito', sans-serif;
   /** primary **/
   --ion-color-primary: #3880ff;
   --ion-color-primary-rgb: 56, 128, 255;

@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "ignotocracia-fadbf": {
+      "hosting": {
+        "app": [
+          "ignotocracia-fadbf"
+        ]
+      }
+    }
+  }
+}

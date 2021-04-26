@@ -1,23 +1,30 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {map} from 'rxjs/operators'
+import { WebserviceService } from '../services/webservice.service';
+import { User } from '../modelo/user';
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.page.html',
   styleUrls: ['./registro.page.scss'],
 })
 export class RegistroPage implements OnInit {
-  results:any;
-  url:'http://localhost:8080/api/users';
-
-  constructor(private http: HttpClient) { }
+  
+  usuarios:User[];
+  constructor(public service:WebserviceService) { }
 
   ngOnInit() {
-    this.results= this.http.get(this.url).pipe(
-      map(results => {
-        return results;
-      })
+    this.cargar();
+  }
+  
+  cargar():void{
+    this.service.getUsuarios().subscribe(
+      data=>{
+        this.usuarios=data;
+      },
+      err=>{
+        console.log(err);
+      }
     )
   }
-
 }

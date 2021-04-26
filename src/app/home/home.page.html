@@ -1,0 +1,50 @@
+
+<ion-content *ngIf="isLogged">
+    <div class="ion-text-center ion-margin-top">
+        <ion-text color="primary" >
+            <h2>Bienvenido {{UserName}} </h2>
+        </ion-text>
+        <ion-item-divider>
+        </ion-item-divider>
+    
+    </div>
+    
+    <ion-tabs>
+      <ion-tab-bar slot="bottom">
+        <ion-tab-button tab="juego">
+          <ion-icon name="calendar"></ion-icon>
+          <ion-label>juegos</ion-label>
+        </ion-tab-button>
+    
+        <ion-tab-button *ngIf="isAdmin" tab="admin">
+          <ion-icon name="person-circle"></ion-icon>
+          <ion-label>Admin</ion-label>
+        </ion-tab-button>
+    
+        <ion-tab-button (click)="logOut()">
+          <ion-icon name="map"></ion-icon>
+          <ion-label>cerrar sesión</ion-label>
+        </ion-tab-button>
+    
+        <ion-tab-button tab="about">
+          <ion-icon name="information-circle"></ion-icon>
+          <ion-label>About</ion-label>
+        </ion-tab-button>
+      </ion-tab-bar>
+    </ion-tabs>  
+</ion-content>
+<ion-content *ngIf="!isLogged">
+    <div class="ion-text-center ion-margin-top">
+        <ion-text color="primary">
+            <h2>No has iniciado sesión </h2>
+        </ion-text>
+        <ion-item-divider>
+        </ion-item-divider>
+        <ion-button routerLink="/login">
+            <ion-icon name="log-out-outline"></ion-icon>Iniciar sesión
+        </ion-button>
+    </div>
+
+
+
+</ion-content>

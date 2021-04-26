@@ -1,0 +1,23 @@
+<app-header title="" name="play-outline"> </app-header>
+
+<ion-content>
+
+  <ion-slides [options]="slideOptsOne" pager=true (ionSlideDidChange)="slidechanged()" #mySlider>
+  <ion-slide *ngFor="let pregunta of preguntas" >
+
+    <ion-card>
+      <ion-img src="{{pregunta.imagen}}"></ion-img>
+      <ion-card-header>
+        <ion-card-subtitle><h2 class="tiempo">{{count}}</h2></ion-card-subtitle>
+        <ion-card-subtitle>{{pregunta.logro.nombre}}- {{pregunta.dificultad.nombre}}</ion-card-subtitle>
+        <ion-card-title>{{pregunta.pregunta}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        Founded in 1829 on an isthmus between Lake Monona and Lake Mendota, Madison was named the capital of the Wisconsin Territory in 1836.
+      </ion-card-content>
+    </ion-card>
+
+      
+    </ion-slide>
+  </ion-slides>
+</ion-content>

@@ -1,0 +1,28 @@
+<app-header title="Editar Usuario"></app-header>
+<ion-content>
+    <form #f="ngForm" (ngSubmit)="onUpdate()" novalidate>
+        <ion-list lines="full" class="ion-no-margin ion-no-padding">
+            <ion-item>
+                <ion-label position="floating">First Name<ion-text color="danger">*</ion-text>
+                </ion-label>
+                <ion-input required type="text" name="nombre"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label  position="floating">email<ion-text color="danger">*</ion-text>
+                </ion-label>
+                <ion-input required type="text"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label  position="floating">enabled<ion-text color="danger">*</ion-text>
+                </ion-label>
+                <ion-input required type="text"></ion-input>
+            </ion-item>
+            
+            <div class="ion-padding">
+                <ion-button color="success" expand="block" type="submit" class="ion-no-margin"><ion-icon name="create"></ion-icon>Actualizar</ion-button>
+            </div>
+        </ion-list>
+    </form>
+
+</ion-content>

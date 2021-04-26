@@ -1,0 +1,16 @@
+<app-header title="JUEGOS" name="play-outline"> </app-header>
+
+<ion-content class="content">
+
+  <ion-card *ngFor="let tp of tiposjuego">
+    <ion-card-header>
+      <ion-card-subtitle>selecciona un juego</ion-card-subtitle>
+      <ion-card-title  routerLink="/jugar/{{tp.id}}">{{tp.nombre}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Keep close to Nature's heart... and break clear away, once in awhile,
+      and climb a mountain or spend a week in the woods. Wash your spirit clean.
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

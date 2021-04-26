@@ -20,16 +20,21 @@ import {
   FacebookLoginProvider
 } from 'angularx-social-login';
 import { HttpClientModule } from '@angular/common/http';
+import { ComponentsModule } from './components/components.module';
+//Importar el interceptor
+import { interceptorProvider } from './interceptors/user-interceptor.service';
+
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule, AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule,IonicModule.forRoot(),AngularFireAuthModule, AppRoutingModule, SocialLoginModule,HttpClientModule],
+    AngularFireDatabaseModule,IonicModule.forRoot(),AngularFireAuthModule, AppRoutingModule, SocialLoginModule,HttpClientModule,ComponentsModule],
   providers: [
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+   
     {
       provide: 'SocialAuthServiceConfig',
       useValue: {
@@ -45,9 +50,9 @@ import { HttpClientModule } from '@angular/common/http';
             id: FacebookLoginProvider.PROVIDER_ID,
             provider: new FacebookLoginProvider('705588407033705')
           }
-        ]
+        ] 
       } as SocialAuthServiceConfig,
-    }
+    } , interceptorProvider
   ],
   bootstrap: [AppComponent]
 })

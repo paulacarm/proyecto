@@ -1,5 +1,7 @@
 {
-  "name": "GamingApp",
-  "integrations": {},
+  "name": "Ignotocracia",
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "angular"
 }

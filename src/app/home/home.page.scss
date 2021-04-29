@@ -1,13 +1,5 @@
-ion-content.background{
- // --background:url(../../assets/color.jpg) 0 0/100% 100% ;
-  
-}
-.content{
-  position: fixed;
-  margin-top: 10px;
-  margin-left: 10px;
 
-}
+
 .button-action{
 margin-left: 5px;
 }
@@ -19,48 +11,19 @@ margin-left: 5px;
 }
 
 
-.signin-text{
-  font-size: small;
-  color: #000000;
+ion-item{
+  font-size: large;
+  font-family: 'Oswald', sans-serif;
+  color: black;
   text-align: center;
   text-transform: none;
-}
-ion-input{
-  background-color: #ededed;
-  border-radius: 5px;
-  font-size: small;
-  
-}
-
-.actionbutton{
-  background-color:#f2c703;
-  color: black;
-  border-radius: 5px;
-  margin-left: 5px;
-  margin-right: 13px;
-  font-size: small;
  
 }
+ion-icon{
+  color: #f2c703;
 
-.line{
-    border-bottom: 1px solid grey;
-    margin-bottom: 16px;
 }
-.botonfb{
-  background-color: #3b5998;
-  border-radius: 6px;
-  color: cornsilk;
-  margin-bottom: 12px;
-  text-transform: none;
-  width: 95%;
-  font-size: small;
-}
-.botongoogle{
-  background-color: #ea4335;
-  border-radius: 6px;
-  color: cornsilk;
-  margin-bottom: 12px;
-  text-transform: none;
-  width: 95%;
-  font-size: small;
+ion-label{
+  color:white;
+  
 }

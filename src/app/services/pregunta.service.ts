@@ -19,4 +19,8 @@ export class PreguntaService {
   public getPreguntasTipoJuego(id:number):Observable<Pregunta[]>{
     return this.http.get<Pregunta[]>(this.url+'/tipo/'+id);
   }
+
+  public getPregunta(id:number):Observable<Pregunta>{
+    return this.http.get<Pregunta>(this.url+id);
+  }
 }

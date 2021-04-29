@@ -1,12 +1,20 @@
 ion-slides {
-    height: 100%;
+    height: auto;
+  }
+  ion-slide{
+    height: auto;
   }
 
 .tiempo{
-    color:#02c19e;
+    color:#ffc409;
     font-size: 40px;
+    font-family: 'Oswald', sans-serif;
   
 }
+ion-label{
+  color: #ffc409;
+}
+
   .swiper-slide {
     display: block;
   }
@@ -41,3 +49,16 @@ ion-slides {
   p b {
     color: var(--ion-text-color, #000000);
   }
+  ion-avatar{
+       width:150px ;
+      height:200px;
+    --border-radius: 10px;
+   } 
+  ion-avatar img { 
+      width: 150px !important; 
+      height: 200px!important; } 
+  .swiper-slide {
+        overflow-y: scroll;    
+        display: block;    
+    }
+ 

@@ -1,9 +1,11 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, Optional } from '@angular/core';
 import { Observable } from 'rxjs';
 import { JwtDto } from '../modelo/jwt-dto';
 import { LoginUsuario } from '../modelo/login-usuario';
 import { NuevoUsuario } from '../modelo/nuevo-usuario';
+import { Usuario } from '../modelo/usuario';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -22,5 +24,14 @@ authURL='http://localhost:8080/auth/';
     console.log(nuevoUsuario.email)
     console.log(nuevoUsuario.password )
     return this.httpClient.post<any>(this.authURL+'nuevo',nuevoUsuario);
+
   }
+
+
+  public  getUsuarioxNombre(nombreUsuario:String):Observable<any>{
+    return this.httpClient.get<any>(this.authURL+nombreUsuario);
+  }
+  
+
+
 }

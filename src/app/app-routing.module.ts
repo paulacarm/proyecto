@@ -55,6 +55,11 @@ const routes: Routes = [
     loadChildren: () => import('./pages/jugar/jugar.module').then( m => m.JugarPageModule)
   },
 
+
+  {
+    path: 'about',
+    loadChildren: () => import('./pages/about/about.module').then( m => m.AboutPageModule)
+  },
   {
     path: '**',
     redirectTo: 'home',

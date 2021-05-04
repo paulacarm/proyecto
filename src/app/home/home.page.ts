@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Usuario } from '../modelo/usuario';
+import { UsuarioLogro } from '../modelo/UsuarioLogro';
 import { AuthService } from '../services/auth.service';
 import { TokenService } from '../services/token.service';
+import { UsuarioLogroService } from '../services/usuario-logro.service';
 
 
 
@@ -23,12 +25,13 @@ export class HomePage  {
   usuario:Usuario;
   email:string;
 
-
+  logrosusuarios:UsuarioLogro[]=[];
 
  nombreusuario:string;
   constructor(
     private tokenService:TokenService,
     private usuarioService:AuthService,
+    private usuarioLogroService: UsuarioLogroService,
     public router:Router
     ) {
      
@@ -52,11 +55,16 @@ export class HomePage  {
       data=>{
         this.usuario=data;
       console.log(this.usuario)
-      }
-      
-    )
+      } );
 
+      this.usuarioLogroService.getLogrosUsuarios().subscribe(
+        data=>{
+          this.logrosusuarios=data;
+          console.log(this.logrosusuarios);
+        }
+      )
 
+    
    
    
     

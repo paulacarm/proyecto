@@ -26,8 +26,7 @@ export class UserInterceptorService implements HttpInterceptor{
     if(token!=null){
       //clona el token y se lo pasa a authReg
       authReg=req.clone({headers:req.headers.set('Authorization','Bearer '+token)})
-console.log(authReg)
-console.log(req)
+
      
     
     }

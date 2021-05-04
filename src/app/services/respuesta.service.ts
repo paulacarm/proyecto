@@ -21,4 +21,8 @@ export class RespuestaService {
     return this.http.get<Respuesta[]>(this.url+'/pregunta/'+id);
   }
 
+  public getRespuestaVerdaderaDePregunta (id:number):Observable<Respuesta>{
+    return this.http.get<Respuesta>(this.url+'/pregunta/'+'/respuestaVerdadera/'+id);
+  }
+
 }

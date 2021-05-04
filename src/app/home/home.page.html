@@ -12,6 +12,11 @@
 <ion-item>
   <ion-icon name="mail-outline"></ion-icon><ion-label>{{usuario.email}}</ion-label>
 </ion-item>
+<ion-list *ngFor="let logro of logrosusuarios">
+  <ion-item  >
+    <ion-label>{{logro.usuario.nombreUsuario}} {{logro.logro.nombre}} {{logro.puntos}}</ion-label>
+  </ion-item>
+</ion-list>
 
   </div>
 

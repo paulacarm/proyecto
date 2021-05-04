@@ -1,4 +1,5 @@
 import { Cronologia } from "./cronologia";
+import { Logro } from "./logro";
 import { TiposJuego } from "./tipoJuego";
 
 export class Pregunta{
@@ -9,6 +10,8 @@ export class Pregunta{
     enlaceArticulo:string;
     cronologia:Cronologia;
     tiposJuego:TiposJuego;
+ logro:Logro;
+
 
 
 }

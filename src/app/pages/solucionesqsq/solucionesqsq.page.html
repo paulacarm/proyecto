@@ -1,0 +1,23 @@
+<ion-content color="primary">
+ <center><p>Acertaste {{totalAciertos}} de 10!</p></center> 
+  <ion-slides [options]="slideOptsOne"  (ionSlideDidChange)="slidechanged()" #mySlider >
+    <ion-slide *ngFor="let pregunta of preguntas">
+      <ion-card class="card" >
+        <ion-card-header >
+          <center><ion-avatar ><ion-img  src="{{pregunta.imagen}}"></ion-img></ion-avatar></center>
+         <p><ion-icon  *ngIf="acertada" style="color:green "name="checkmark-outline"></ion-icon></p> 
+         <p> <ion-icon *ngIf="!acertada"  style="color:red"name="close-outline"></ion-icon></p>
+          <ion-card-title style="font-size: large;;margin-top: 10px;"> <p text-center style="color:#ffc409;">Respuesta correcta:</p>{{respuesta.respuesta}}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content > 
+      
+    
+          {{pregunta.saberMas}}
+          {{pregunta.enlaceArticulo}}
+          <ion-button style="margin-top: 10px;" *ngIf="(!ultimaPregunta)"(click)="swipeNext()" color="primary" expand="block"  class="ion-no-margin"><ion-icon name="arrow-forward-outline"></ion-icon>Siguiente</ion-button>
+        </ion-card-content>
+      
+      </ion-card>
+      </ion-slide>
+    </ion-slides>
+</ion-content>

@@ -61,10 +61,19 @@ const routes: Routes = [
     loadChildren: () => import('./pages/about/about.module').then( m => m.AboutPageModule)
   },
   {
+    path: 'quiz',
+    loadChildren: () => import('./pages/quiz/quiz.module').then( m => m.QuizPageModule)
+  },
+  {
+    path: 'solucionesqsq',
+    loadChildren: () => import('./pages/solucionesqsq/solucionesqsq.module').then( m => m.SolucionesqsqPageModule)
+  },
+  {
     path: '**',
     redirectTo: 'home',
     pathMatch: 'full'
   },
+
  
 
 ];

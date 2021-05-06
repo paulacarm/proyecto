@@ -1,14 +1,13 @@
-<app-header title="JUEGOS" name="play-outline"> </app-header>
 
-<ion-content class="content" color="primary">
 
-  <ion-card *ngFor="let tp of tiposjuego" >
-    <ion-card-header>
-      <ion-card-subtitle>selecciona un juego</ion-card-subtitle>
-      <ion-card-title  routerLink="/jugar/{{tp.id}}">{{tp.nombre}}</ion-card-title>
+<ion-content class="content"color="primary" >
+
+  <ion-card *ngFor="let tp of tiposjuego" color="primary">
+    <ion-card-header >
+      <ion-card-title  routerLink="/jugar/{{tp.id}}" style="color: #f2c703;">{{tp.nombre}}</ion-card-title>
     </ion-card-header>
-    <ion-card-content>
-    {{tp.descripcion}}
+    <ion-card-content  >
+   <ion-label> {{tp.descripcion}}</ion-label>
     </ion-card-content>
   </ion-card>
 

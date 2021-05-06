@@ -1,8 +1,7 @@
-<app-header title="" name="play-outline"> </app-header>
 
 <ion-content color="primary">
   <ion-slides class="swiper-no-swiping" [options]="slideOptsOne"  (ionSlideDidChange)="slidechanged()"   #mySlider >
-  <ion-slide *ngFor="let pregunta of preguntas">
+  <ion-slide *ngFor="let pregunta of preguntasDesordenadas">
     <ion-card class="card" >
       <ion-card-header >
         <center><ion-avatar ><ion-img  src="{{pregunta.imagen}}"></ion-img></ion-avatar></center>
@@ -13,10 +12,9 @@
         <ion-card-title>{{pregunta.pregunta}}</ion-card-title>
       </ion-card-header>
       <ion-card-content  > 
-
         <ion-radio-group [(ngModel)]="respuestaUsuario" name="radio-group" #radioGroup >
           <ion-item  *ngFor="let respuesta of respuestasDePregunta">
-            <ion-label >{{respuesta.respuesta}}</ion-label>
+            <ion-label  >{{respuesta.respuesta}}</ion-label>
             <ion-radio name="respuesta" slot="end" color="danger" value="{{respuesta.respuesta}}"></ion-radio>
           </ion-item>
         </ion-radio-group>
@@ -26,5 +24,4 @@
     </ion-card>
     </ion-slide>
   </ion-slides>
- 
 </ion-content>

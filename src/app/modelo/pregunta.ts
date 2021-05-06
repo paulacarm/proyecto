@@ -10,7 +10,7 @@ export class Pregunta{
     enlaceArticulo:string;
     cronologia:Cronologia;
     tiposJuego:TiposJuego;
- logro:Logro;
+    logro:Logro;
 
 
 

@@ -1,10 +1,15 @@
-p{
+.aciertos{
    
-        color: #ffc409;
+        color: white;
         font-weight: bold;
         font-family: 'Oswald', sans-serif;
         font-size: xx-large;
+        margin-bottom: auto;
     
+}
+ion-icon{
+  font-size: xx-large;
+  margin-top: 10px;
 }
 
 ion-slides {
@@ -25,4 +30,11 @@ ion-avatar img {
 .swiper-slide {
      overflow-y: scroll;    
      display: block;    
+ }
+ ion-item{
+   text-align: left;
+   font-family: 'Oswald', sans-serif;
+
+   margin-bottom: 10px;
+   
  }

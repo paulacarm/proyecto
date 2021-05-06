@@ -75,7 +75,7 @@ export class LoginPage implements OnInit {
         this.tokenService.setUsername(data.nombreUsuario);
         this.tokenService.setAuthorities(data.authorities);
         this.isLogged = true;
-        this.router.navigate(['/home']);
+        this.router.navigate(['/home/perfil']);
         console.log("nombre usuario en login "+ this.nombreUsuario);
       },
       err => {

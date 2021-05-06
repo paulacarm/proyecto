@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
+
   {
     path: 'home',
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
@@ -54,8 +55,6 @@ const routes: Routes = [
     path: 'jugar/:id',
     loadChildren: () => import('./pages/jugar/jugar.module').then( m => m.JugarPageModule)
   },
-
-
   {
     path: 'about',
     loadChildren: () => import('./pages/about/about.module').then( m => m.AboutPageModule)
@@ -69,10 +68,15 @@ const routes: Routes = [
     loadChildren: () => import('./pages/solucionesqsq/solucionesqsq.module').then( m => m.SolucionesqsqPageModule)
   },
   {
+    path: 'perfil',
+    loadChildren: () => import('./pages/perfil/perfil.module').then( m => m.PerfilPageModule)
+  },
+  {
     path: '**',
     redirectTo: 'home',
     pathMatch: 'full'
   },
+ 
 
  
 

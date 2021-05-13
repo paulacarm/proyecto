@@ -34,10 +34,7 @@ export class HomePage  {
     private usuarioLogroService: UsuarioLogroService,
     public router:Router
     ) {
-     
-
-   
-     
+    
   }
 
 
@@ -57,14 +54,6 @@ export class HomePage  {
       console.log(this.usuario)
       } );
 
-      this.usuarioLogroService.getLogrosUsuarios().subscribe(
-        data=>{
-          this.logrosusuarios=data;
-          console.log(this.logrosusuarios);
-        }
-      )
-
-    
    
    
     
@@ -78,8 +67,4 @@ export class HomePage  {
     this.router.navigate(['/login']);
 
   }
-
- 
-
-
 }

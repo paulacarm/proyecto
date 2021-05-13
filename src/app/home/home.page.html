@@ -1,6 +1,7 @@
 
 
-<ion-content>
+<ion-content *ngIf="isLogged">
+  
   <ion-tabs >
     <ion-tab-bar slot="bottom" color="primary">
 
@@ -28,8 +29,6 @@
         <ion-icon name="log-out-outline"></ion-icon>
         <ion-label>cerrar sesión</ion-label>
       </ion-tab-button>
-
-    
     </ion-tab-bar>
   </ion-tabs>
 </ion-content>

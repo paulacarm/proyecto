@@ -9,7 +9,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'home/perfil',
     pathMatch: 'full'
   },
   {
@@ -73,7 +73,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'home',
+    redirectTo: 'home/perfil',
     pathMatch: 'full'
   },
  

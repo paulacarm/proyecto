@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Logro } from 'src/app/modelo/logro';
 import { Usuario } from 'src/app/modelo/usuario';
 import { UsuarioLogro } from 'src/app/modelo/UsuarioLogro';
 import { AuthService } from 'src/app/services/auth.service';
+import { LogroService } from 'src/app/services/logro.service';
 import { TokenService } from 'src/app/services/token.service';
 import { UsuarioLogroService } from 'src/app/services/usuario-logro.service';
 
@@ -17,14 +19,23 @@ export class PerfilPage implements OnInit {
   usuarios:Usuario[]=[];
   usuario:Usuario;
   email:string;
+  logros:Logro[]=[];
   logrosusuarios:UsuarioLogro[]=[];
   nombreusuario:string;
+  ul:UsuarioLogro;
   constructor(  private tokenService:TokenService,
     private usuarioService:AuthService,
-    private usuarioLogroService: UsuarioLogroService,) { }
+    private usuarioLogroService: UsuarioLogroService,private logroService:LogroService) { }
 
   ngOnInit() {
-   
+    this.logroService.getAllLogros().subscribe(
+      data=>{
+        this.logros=data;
+        console.log(data)
+      }
+    )
+    
+    
   }
   
   ionViewWillEnter(){
@@ -32,20 +43,35 @@ export class PerfilPage implements OnInit {
   
 }
   testLogged():void{
+    console.log("usuario en perfil")
     this.isLogged=this.tokenService.getToken()!=null;
     this.UserName=this.tokenService.getUsername();
     this.isAdmin=this.tokenService.getAuthorities().length>1;
     this.usuarioService.getUsuarioxNombre(this.UserName).subscribe(
       data=>{
         this.usuario=data;
+        console.log("usuario en perfil")
       console.log(this.usuario)
-      } );
 
-      this.usuarioLogroService.getLogrosUsuarios().subscribe(
+
+      this.usuarioLogroService.getLogrosUsuario(this.usuario.id).subscribe(
         data=>{
           this.logrosusuarios=data;
-          console.log(this.logrosusuarios);
+          console.log(data);
+        if(this.logrosusuarios.length==0){
+      for(let logro of this.logros){
+          this.ul  =new UsuarioLogro(this.usuario,logro,0);
+            this.usuarioLogroService.postLogro(this.ul).subscribe(
+              data=>{
+                console.log(data);
+              }
+            )
+      
+            }
         }
-      )
+        }
+      );
+      } )
+
 }
 }

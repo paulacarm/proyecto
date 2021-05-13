@@ -32,11 +32,6 @@ const routes: Routes = [
         loadChildren:()=>import('../pages/perfil/perfil.module').then(m=>m.PerfilPageModule)
        
       },
-      {
-        path: '',
-        redirectTo: '/perfil',
-        pathMatch: 'full'
-      }
    
     ]
   },

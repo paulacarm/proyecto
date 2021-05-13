@@ -173,7 +173,11 @@ export class JugarPage implements OnInit {
         preguntas: this.preguntasDesordenadas
       }
     };
+  
+ 
+  
     this.router.navigate(['solucionesqsq'], navigationExtras);
+  
   }
 
   //Temporizador para las preguntas. 
@@ -195,7 +199,8 @@ export class JugarPage implements OnInit {
   }
   ngOnDestroy() {
     clearInterval(this.intervalo);
-
   }
+
+
 
 }

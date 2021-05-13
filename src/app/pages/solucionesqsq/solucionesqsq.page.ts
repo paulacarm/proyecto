@@ -1,8 +1,7 @@
 
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IonSlides } from '@ionic/angular';
-import { Logro } from 'src/app/modelo/logro';
+import { AlertController, IonSlides } from '@ionic/angular';
 import { Pregunta } from 'src/app/modelo/pregunta';
 import { Respuesta } from 'src/app/modelo/respuesta';
 import { Usuario } from 'src/app/modelo/usuario';
@@ -19,6 +18,7 @@ import { UsuarioLogroService } from 'src/app/services/usuario-logro.service';
   styleUrls: ['./solucionesqsq.page.scss'],
 })
 export class SolucionesqsqPage implements OnInit {
+   ul:UsuarioLogro;
   respuestasDePregunta: Respuesta[] = [];
   preguntasAcertadas: Pregunta[]=[];
   respuestas: Respuesta[];
@@ -33,15 +33,19 @@ export class SolucionesqsqPage implements OnInit {
   userName: String;
   acertada:boolean;
 
+  //Variable para guardar los puntos que se asginarán a cada logro
+  PUNTOS:number=20;
+
   ultimapregunta:boolean;
   @ViewChild('mySlider') slides: IonSlides;
 
   constructor(private route: ActivatedRoute, private router: Router, private respuestaService: RespuestaService,
-    public usuarioLogroService: UsuarioLogroService, public tokenService: TokenService, public usuarioService: AuthService) {
+    public usuarioLogroService: UsuarioLogroService, public tokenService: TokenService, public usuarioService: AuthService,  public alertController: AlertController) {
    
 
   }
   ngOnInit(): void {
+
     this.route.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation().extras.state) {
         this.respuestas = this.router.getCurrentNavigation().extras.state.respuestas;
@@ -136,28 +140,49 @@ export class SolucionesqsqPage implements OnInit {
             }
           }
         
-          for(let pregunta of this.preguntasAcertadas){
-            let ulId = new UsuarioLogroId(this.usuario.id, pregunta.logro.id_logro);
-            this.usuarioLogro = new UsuarioLogro(this.usuario, pregunta.logro ,20);
-            
-          /*  this.usuarioLogroService.actualizarLogro(this.usuarioLogro,ulId,).subscribe(
-              data=>{
-                console.log(data)
-              }
-            )*/
-            /*this.usuarioLogroService.postLogro(this.usuarioLogro).subscribe(
-              data=>{
-                console.log(data)
-             }
-            )*/
-     
-          }
+      
     }
 
+    for(let pregunta of this.preguntasAcertadas){
+      this.ul=new UsuarioLogro(this.usuario,pregunta.logro,this.PUNTOS);
+      this.usuarioLogroService.actualizarLogro(this.ul,this.usuario.id,pregunta.logro.id_logro).subscribe(
+        data=>{
+          console.log(data)
+        }
+      )
+    }            
+    
+  
+     /* this.usuarioLogroService.postLogro(this.ul).subscribe(
+        data=>{
+          console.log(data)
+        },error=>{
+    
 
+    })*/
   }
 
+saltar(){
+this.abandonarAlert();
+}
+async abandonarAlert() {
+  const alert = await this.alertController.create({
+    cssClass: 'alert',
+    header: '¿Está seguro?',
+    subHeader: 'Se perderá información interesante',
+    buttons: [
 
+      {
+        text: 'Ok',
+        handler: () => {
+          this.router.navigate(['home/perfil']);
+        }
+      }
+    ]
+  });;
+
+  await alert.present();
+}
   
   swipeNext() {
     this.slides.getActiveIndex().then(id => {

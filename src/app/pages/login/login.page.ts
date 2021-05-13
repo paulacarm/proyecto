@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { SocialAuthService } from "angularx-social-login";
 import { FacebookLoginProvider, GoogleLoginProvider } from "angularx-social-login";
@@ -133,7 +132,7 @@ export class LoginPage implements OnInit {
 
 
     this.isLogged = true;
-    this.router.navigate(['/home']);
+    this.router.navigate(['/home/perfil']);
 
 
   }

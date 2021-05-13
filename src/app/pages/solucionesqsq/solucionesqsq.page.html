@@ -1,12 +1,16 @@
 <ion-content color="primary">
  <center><p class="aciertos">{{totalAciertos}}/ 10!</p></center> 
+ <ion-button color="danger" expand="block"  (click)="saltar()" class="ion-no-margin"><ion-icon name="exit-outline"></ion-icon>Salir</ion-button>
+ <ion-item-divider >
+</ion-item-divider>
   <ion-slides [options]="slideOptsOne"  (ionSlideDidChange)="slidechanged()" #mySlider >
     <ion-slide *ngFor="let pregunta of preguntas" class="swiper-no-swiping">
       <ion-card class="card" >
         <ion-card-header >
           <center><ion-avatar ><ion-img  src="{{pregunta.imagen}}"></ion-img></ion-avatar></center>
-         <p><ion-icon  *ngIf="acertada" style="color:green "name="checkmark-outline"></ion-icon></p> 
-         <p> <ion-icon *ngIf="!acertada"  style="color:red"name="close-outline"></ion-icon></p>
+         <p><ion-icon class="icon" *ngIf="acertada" style="color:green "name="checkmark-outline"></ion-icon></p> 
+         <p  *ngIf="acertada">+20 puntos en {{pregunta.logro.nombre}}</p> 
+         <p> <ion-icon class="icon" *ngIf="!acertada"  style="color:red"name="close-outline"></ion-icon></p>
           <ion-card-title style="font-size: large;;margin-top: 10px;"> <p text-center style="color:#ffc409;">Respuesta correcta:</p>{{respuesta.respuesta}}</ion-card-title>
         </ion-card-header>
         <ion-card-content > 
@@ -16,7 +20,7 @@
           </ion-item>
         
           <ion-button *ngIf="(!ultimapregunta)"(click)="swipeNext()" color="primary" expand="block"  class="ion-no-margin"><ion-icon name="arrow-forward-outline"></ion-icon>Siguiente</ion-button>
-        <ion-button *ngIf="(ultimapregunta)"   routerLink="/home"  color="primary" expand="block"  class="ion-no-margin"><ion-icon name="arrow-forward-outline" ></ion-icon>Volver al inicio</ion-button>
+        <ion-button *ngIf="(ultimapregunta)"   routerLink="/home/perfil"  color="primary" expand="block"  class="ion-no-margin"><ion-icon name="arrow-forward-outline" ></ion-icon>Volver al inicio</ion-button>
    
         </ion-card-content>
       

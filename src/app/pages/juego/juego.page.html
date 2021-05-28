@@ -3,8 +3,9 @@
 <ion-content class="content"color="primary" >
 
   <ion-card *ngFor="let tp of tiposjuego" color="primary">
+
     <ion-card-header >
-      <ion-card-title  routerLink="/jugar/{{tp.id}}" style="color: #f2c703;">{{tp.nombre}}</ion-card-title>
+      <ion-card-title  (click)="enviarJuego(tp.id)" style="color: #f2c703;">{{tp.nombre}}</ion-card-title>
     </ion-card-header>
     <ion-card-content  >
    <ion-label> {{tp.descripcion}}</ion-label>

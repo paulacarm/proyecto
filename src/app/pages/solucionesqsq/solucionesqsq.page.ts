@@ -23,7 +23,7 @@ export class SolucionesqsqPage implements OnInit {
   preguntasAcertadas: Pregunta[]=[];
   respuestas: Respuesta[];
   preguntas: Pregunta[];
-  respuesta: Respuesta = new Respuesta();
+  respuesta: Respuesta=new Respuesta(null,null,null,null) ;
   pregunta: Pregunta;
   totalAciertos: number;
   usuarioLogro:UsuarioLogro;

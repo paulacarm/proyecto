@@ -1,28 +1,32 @@
-<app-header title="Editar Usuario"></app-header>
-<ion-content>
-    <form #f="ngForm" (ngSubmit)="onUpdate()" novalidate>
-        <ion-list lines="full" class="ion-no-margin ion-no-padding">
-            <ion-item>
-                <ion-label position="floating">First Name<ion-text color="danger">*</ion-text>
-                </ion-label>
-                <ion-input required type="text" name="nombre"></ion-input>
-            </ion-item>
-
-            <ion-item>
-                <ion-label  position="floating">email<ion-text color="danger">*</ion-text>
-                </ion-label>
-                <ion-input required type="text"></ion-input>
-            </ion-item>
-            <ion-item>
-                <ion-label  position="floating">enabled<ion-text color="danger">*</ion-text>
-                </ion-label>
-                <ion-input required type="text"></ion-input>
-            </ion-item>
+<ion-header >
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  
+<ion-content color="primary">
+    <ion-card class="card" *ngFor="let pregunta of preguntas">
+        <ion-card-header >
+          
+          <center><ion-avatar ><ion-img  src="{{pregunta.imagen}}"></ion-img></ion-avatar></center>
+          <ion-card-subtitle></ion-card-subtitle>
+          <ion-card-title>{{pregunta.pregunta}}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content  > 
+        <center><div>
+            <ion-button  color="warning"  (click)='enviarPregunta(pregunta)' > <ion-icon  name="create-outline"></ion-icon>Editar</ion-button>
+            <ion-button  color="danger" (click)="eliminarPregunta(pregunta)">  <ion-icon  name="trash-outline"></ion-icon>Eliminar</ion-button>
+        </div></center> 
             
-            <div class="ion-padding">
-                <ion-button color="success" expand="block" type="submit" class="ion-no-margin"><ion-icon name="eye-outline"></ion-icon>Ver respuestas</ion-button>
-            </div>
-        </ion-list>
-    </form>
+        <div *ngIf="(ver)">
+            <ion-item *ngFor="let respuesta of respuestas">
+                <ion-label  >{{respuesta.respuesta}}</ion-label>
+            </ion-item>
+        </div>
+        </ion-card-content>
+      </ion-card>
+ 
 
 </ion-content>

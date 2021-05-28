@@ -21,21 +21,20 @@ export class JugarPage implements OnInit {
   usuario: Usuario;
   //varbiable para guardar el nombre de usuario
   userName: String;
-  //Variable para
+  //Variable para saber el tipo de juego 
   id: number;
   preguntas: Pregunta[] = [];
   preguntasDesordenadas: Pregunta[] = [];
   respuestas: Respuesta[] = [];
   respuestasVerdaderas: Respuesta[] = [];
   respuestasDePregunta: Respuesta[] = [];
-  pregunta: Pregunta = new Pregunta();
+  pregunta: Pregunta ;
   public count: number;
   public tiempo;
   public intervalo;
   public respuestaUsuario: String;
   public page: number = 1;
-
-  respuesta: Respuesta;
+  respuesta: Respuesta=new Respuesta(null,null,null,null);
   slideOptsOne = {
     onlyExternal: true
 
@@ -55,6 +54,7 @@ export class JugarPage implements OnInit {
     this.id = this.rutaActiva.snapshot.params.id;
     this.presentAlert();
     this.respuestaUsuario = "";
+  
   }
 
   async presentAlert() {
@@ -92,6 +92,7 @@ export class JugarPage implements OnInit {
   }
 
   ngOnInit() {
+ 
     this.ultimaPregunta = false;
     this.respuestasDePregunta = [];
     this.respuestasVerdaderas = [];

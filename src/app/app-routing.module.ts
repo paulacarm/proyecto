@@ -3,18 +3,15 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
 
-  {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
-  },
+  
   {
     path: '',
-    redirectTo: 'home/perfil',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {
-    path: 'registro',
-    loadChildren: () => import('./registro/registro.module').then( m => m.RegistroPageModule)
+    path: 'home',
+    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
   {
     path: 'admin',
@@ -41,7 +38,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/editar/editar.module').then( m => m.EditarPageModule)
   },
   {
-    path: 'detalle/:id',
+    path: 'detalle',
     loadChildren: () => import('./pages/detalle/detalle.module').then( m => m.DetallePageModule)
   }, {
     path: 'juego',
@@ -60,7 +57,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/about/about.module').then( m => m.AboutPageModule)
   },
   {
-    path: 'quiz',
+    path: 'quiz/:id',
     loadChildren: () => import('./pages/quiz/quiz.module').then( m => m.QuizPageModule)
   },
   {
@@ -72,10 +69,15 @@ const routes: Routes = [
     loadChildren: () => import('./pages/perfil/perfil.module').then( m => m.PerfilPageModule)
   },
   {
+    path: 'editar-respuesta',
+    loadChildren: () => import('./pages/editar-respuesta/editar-respuesta.module').then( m => m.EditarRespuestaPageModule)
+  },
+  {
     path: '**',
     redirectTo: 'home/perfil',
     pathMatch: 'full'
   },
+ 
  
 
  

@@ -1,9 +1,26 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>quiz</ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content>
 
+<ion-content color="primary">
+  <ion-slides   #mySlider  >
+    <ion-slide style ="height: 800px;">
+      <ion-card  >
+        <ion-card-content  > 
+          <ion-img   src="../../../assets/imagenes/quizcine.jpg" ></ion-img>
+        </ion-card-content>
+      </ion-card>
+    
+    </ion-slide>
+    <ion-slide *ngFor="let pregunta of preguntas">
+      <ion-card  >
+        <ion-card-header >
+          <center><ion-avatar ><ion-img  src="../../../assets/imagenes/logo.png" ></ion-img></ion-avatar></center>
+          
+          <ion-card-title> {{pregunta.pregunta}}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content  > 
+  
+        </ion-card-content>
+      </ion-card>
+      </ion-slide>
+  </ion-slides>
 </ion-content>

@@ -1,14 +1,68 @@
-<app-header title="Detalle"></app-header>
+<ion-header >
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content color="primary">
+  <ion-card>
+    <ion-img src="{{pregunta.imagen}}"></ion-img>
+    <ion-card-header>
+      <ion-card-subtitle>{{pregunta.logro.nombre}}- {{pregunta.dificultad.nombre}} - {{pregunta.cronologia.nombre}}
+      </ion-card-subtitle>
+      <ion-card-title> {{pregunta.pregunta}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+         <ion-input [(ngModel)]="preguntaNueva" placeholder="Escribe pregunta modificada"></ion-input>
+      </ion-item>
+     
+      <ion-item>
+        <ion-label color="warning">Logro</ion-label>
+        <ion-select placeholder="Logro" interface="popover" [(ngModel)]=" logroSeleccionado">
+          <ion-select-option *ngFor="let logro of logros" [value]="logro" >
+            {{logro.nombre}}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label color="warning">Dificultad</ion-label>
+        <ion-select placeholder="Dificultad" interface="popover" [(ngModel)]=" dificultadSeleccionada">
+          <ion-select-option *ngFor="let dificultad of dificultades" [value]="dificultad" >
+            {{dificultad.nombre}}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label color="warning">Cronologia</ion-label>
+        <ion-select placeholder="Cronologia" interface="popover" [(ngModel)]="cronologiaSeleccionada">
+          <ion-select-option *ngFor="let cronologia of cronologias"[value]="cronologia" >
+            {{cronologia.nombre}}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
 
-<ion-content>
-    <ion-card>
-        <ion-card-header>
-          <ion-card-title>Pregunta 01</ion-card-title>
-          <ion-card-subtitle>Historia</ion-card-subtitle>
-        </ion-card-header> 
-        <ion-card-content>
-          Keep close to Nature's heart... and break clear away, once in awhile,
-          and climb a mountain or spend a week in the woods. Wash your spirit clean.
-        </ion-card-content>
-      </ion-card>
+      <ion-item-divider >
+      </ion-item-divider>
+ 
+        <div *ngFor="let respuesta of respuestas">
+          <ion-item *ngIf=(!respuesta.esVerdadera)>
+           {{respuesta.respuesta}} <ion-button color="warning" style="display: block;margin-left: 10px;" (click)='ModificarRespuesta(respuesta)'><ion-icon name="create-outline"></ion-icon></ion-button>
+          </ion-item>
+         <ion-item *ngIf=(respuesta.esVerdadera) style="color: green;">
+          {{respuesta.respuesta}}  <ion-button color="warning" style="display: block;margin-left: 10px;" (click)='ModificarRespuesta(respuesta)'><ion-icon name="create-outline"></ion-icon></ion-button>
+          </ion-item> 
+     
+          
+     
+        </div>
+       
+
+ 
+    </ion-card-content>
+    <ion-button color="warning" style="display: block;" (click)='guardarCambios()'><ion-icon name="create-outline"></ion-icon>Confirmar cambios</ion-button>
+  </ion-card>
+
+
 </ion-content>

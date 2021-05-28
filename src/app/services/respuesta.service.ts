@@ -25,4 +25,9 @@ export class RespuestaService {
     return this.http.get<Respuesta>(this.url+'/pregunta/'+'/respuestaVerdadera/'+id);
   }
 
+  public modificarRespuesta(respuesta:Respuesta,id:number):Observable<Respuesta>{
+    return this.http.put<Respuesta>(this.url+'/'+id,respuesta);
+  }
+
+
 }

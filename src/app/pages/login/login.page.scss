@@ -3,7 +3,7 @@
      //position: fixed;
      margin-top: 10px;
      margin-left: 10px;
-     font-family: 'Oswald', sans-serif;
+ 
     
      
    
@@ -20,11 +20,14 @@
    
     
    }
+   ion-icon{
+     color:#f2c703; 
+   }
    
    
    .signin-text{
-     font-size: small;
-     color: #000000;
+     font-size:medium;
+   //  color: #000000;
      text-align: center;
      text-transform: none;
 
@@ -37,7 +40,8 @@
    }*/
    ion-input{
      border-bottom: 1px solid #02c19e;
-     font-size: small;
+     font-size: medium;
+    color: white;
    }
    
    .actionbutton{
@@ -50,6 +54,10 @@
 
     
    }
+   ion-segment-button {
+    --background-checked: white;
+    --color-checked: black;
+  }
    
    .line{
        border-bottom: 1px solid grey;
@@ -74,6 +82,9 @@
      width: 95%;
      font-size: small;
     
+   }
+   ion-segment{
+    //--background:#f2c703;
    }
 
    

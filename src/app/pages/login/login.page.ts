@@ -78,7 +78,7 @@ export class LoginPage implements OnInit {
         console.log("nombre usuario en login "+ this.nombreUsuario);
       },
       err => {
-        this.presentToast(err.error);
+        this.presentToast("Datos erróneos");
 
 
       }
@@ -90,6 +90,8 @@ export class LoginPage implements OnInit {
     this.nuevoUsuarioNombreUsuario='';
     this.nuevoUsuariopassword='';
     this.nuevoUsuarioEmail='';
+    this.nombreUsuario='';
+    this.password='';
   }
   onRegistrer() {
 
@@ -104,7 +106,7 @@ export class LoginPage implements OnInit {
     this.authService.registro(this.nuevoUsuario).subscribe(
       data => {
         console.log(data)
-        this.presentToast(data.mensaje)
+        this.presentToast("registro correcto")
        this.registrar=false;
        this.vaciarCampos();
      

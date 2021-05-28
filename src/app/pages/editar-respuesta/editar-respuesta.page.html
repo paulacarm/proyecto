@@ -1,0 +1,30 @@
+<ion-header >
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="primary" style="margin:10px">
+   <ion-item color="primary" lines="none" >
+     <ion-label><strong>Respuesta actual</strong> </ion-label>
+   </ion-item>
+   <ion-item color="primary" lines="none">
+     <ion-label>{{respuesta.respuesta}}</ion-label>
+   </ion-item>
+   <ion-item-divider >
+  </ion-item-divider>
+   <ion-item color="primary" lines="none">
+    <ion-label><strong>Nueva respuesta</strong> </ion-label>
+  </ion-item>
+  <ion-item color="primary">
+    <ion-label>
+      <ion-input type="text" [(ngModel)]="nuevaRespuesta"placeholder="Escriba aqui"></ion-input>
+    </ion-label>
+  </ion-item>
+
+    
+  <ion-button color="warning" style="display: block;margin: 10px;" (click)='ModificarRespuesta()' ><ion-icon name="create-outline"></ion-icon>Confirmar edición</ion-button>
+
+</ion-content>

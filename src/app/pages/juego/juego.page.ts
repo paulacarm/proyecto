@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Pregunta } from 'src/app/modelo/pregunta';
 import { TiposJuego } from 'src/app/modelo/tipoJuego';
 import { PreguntaService } from 'src/app/services/pregunta.service';
@@ -13,7 +14,7 @@ export class JuegoPage implements OnInit {
  
  tiposjuego:TiposJuego[]=[];
  
-  constructor( private tpService:TipoJuegoService) { }
+  constructor( private tpService:TipoJuegoService,public router:Router) { }
  
   ngOnInit() {
     this.cargar();
@@ -29,5 +30,14 @@ export class JuegoPage implements OnInit {
     ),err=>{
       console.log(err);
     }
+  }
+  enviarJuego(id:number){
+    if(id==1){
+      this.router.navigate(['jugar/'+id])
+    }
+    if(id==2){
+      this.router.navigate(['quiz/'+id])
+    }
+    
   }
 }

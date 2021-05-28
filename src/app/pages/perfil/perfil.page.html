@@ -15,9 +15,8 @@
 <ion-item-divider >
 </ion-item-divider>
 
-<ion-item  *ngFor="let logro of logrosusuarios" color="primary" >
-  {{logro.id_logro}}
-  <ion-icon name="file-tray-full-outline"></ion-icon><ion-label>{{logro.logro.nombre}}</ion-label>
+<ion-item  *ngFor="let logro of logrosusuarios" color="primary" style="margin-top: 20px;">
+  <ion-icon name="trophy-outline"></ion-icon><ion-label>{{logro.logro.nombre}}</ion-label>
   <ion-icon name="happy-outline"></ion-icon><ion-label> {{logro.puntos}}</ion-label>
 </ion-item>
 </div>

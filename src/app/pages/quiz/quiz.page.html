@@ -1,24 +1,24 @@
-
-
 <ion-content color="primary">
-  <ion-slides   #mySlider  >
-    <ion-slide style ="height: 800px;">
-      <ion-card  >
-        <ion-card-content  > 
-          <ion-img   src="../../../assets/imagenes/quizcine.jpg" ></ion-img>
-        </ion-card-content>
-      </ion-card>
-    
-    </ion-slide>
-    <ion-slide *ngFor="let pregunta of preguntas">
+  <ion-slides #mySlider (ionSlideDidChange)="slidechanged()" >
+    <ion-slide *ngFor="let pregunta of preguntas" class="swiper-no-swiping">
       <ion-card  >
         <ion-card-header >
-          <center><ion-avatar ><ion-img  src="../../../assets/imagenes/logo.png" ></ion-img></ion-avatar></center>
-          
-          <ion-card-title> {{pregunta.pregunta}}</ion-card-title>
+          <ion-img  src="../../../assets/imagenes/quizcine.jpg" ></ion-img>
+          <p text-center style="color:#ffc409;">{{page}}/10</p>
+          <ion-card-subtitle><h2 class="tiempo" style="color:#ffc409;">{{count}}</h2></ion-card-subtitle>
+          <ion-card-title   > {{pregunta.pregunta}}</ion-card-title>
         </ion-card-header>
         <ion-card-content  > 
-  
+          <ion-card-content  > 
+            <ion-radio-group [(ngModel)]="respuestaUsuario" name="radio-group" #radioGroup >
+              <ion-item  *ngFor="let respuesta of respuestasDePregunta"  lines="none">
+               {{respuesta.respuesta}}
+                <ion-radio name="respuesta" slot="end" color="danger" value="{{respuesta.respuesta}}"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+            <ion-button *ngIf="(!ultima)"(click)="swipeNext()" color="primary" expand="block"  class="ion-no-margin"><ion-icon name="arrow-forward-outline"></ion-icon>Siguiente</ion-button>
+            <ion-button *ngIf="(ultima)"  (click)="terminarJuego()" color="primary" expand="block"  class="ion-no-margin"><ion-icon name="arrow-forward-outline" ></ion-icon>Terminar</ion-button>
+          </ion-card-content>
         </ion-card-content>
       </ion-card>
       </ion-slide>

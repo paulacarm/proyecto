@@ -78,7 +78,7 @@ export class LoginPage implements OnInit {
         console.log("nombre usuario en login "+ this.nombreUsuario);
       },
       err => {
-        this.presentToast("Datos erróneos");
+        this.presentToast("Datos erróneos" + err.toString());
 
 
       }

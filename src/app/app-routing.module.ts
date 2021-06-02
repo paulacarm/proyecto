@@ -61,6 +61,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/solucionesqsq/solucionesqsq.module').then( m => m.SolucionesqsqPageModule)
   },
   {
+    path: 'solucuionesquiz',
+    loadChildren: () => import('./pages/solucuionesquiz/solucuionesquiz.module').then( m => m.SolucuionesquizPageModule)
+  },
+  {
     path: 'perfil',
     loadChildren: () => import('./pages/perfil/perfil.module').then( m => m.PerfilPageModule)
   },
@@ -73,6 +77,8 @@ const routes: Routes = [
     redirectTo: 'home/perfil',
     pathMatch: 'full'
   },
+
+
  
  
 

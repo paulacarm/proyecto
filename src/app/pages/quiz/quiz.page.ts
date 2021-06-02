@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { AlertController, IonSlides } from '@ionic/angular';
 import { Pregunta } from 'src/app/modelo/pregunta';
 import { Respuesta } from 'src/app/modelo/respuesta';
@@ -16,25 +16,42 @@ export class QuizPage implements OnInit {
 
   preguntas: Pregunta[] = [];
   @ViewChild('mySlider') slides: IonSlides;
-  NUMERO_PREGUNTAS: number = 8;
-  page: number = 1;
+  private NUMERO_PREGUNTAS: number = 8;
+  private page: number = 1;
   public count: number;
   public tiempo;
   public intervalo;
-  pregunta: Pregunta;
-  respuestasDePregunta: Respuesta[] = [];
-  ultima: boolean
+  private pregunta: Pregunta;
+  private respuestasDePregunta: Respuesta[] = [];
+  private ultima: boolean
   public respuestaUsuario: String;
+  private numAciertos: number
+  private respuestas:Respuesta[] =[]
+  private respuestasCorrectas: Respuesta[] = []
+
 
   constructor(private preguntaService: PreguntaService,
     public alertController: AlertController, private rutaActiva: ActivatedRoute,
-    private respuestaService: RespuestaService) {
+    private respuestaService: RespuestaService, private router: Router) {
     this.id = this.rutaActiva.snapshot.params.id;
     this.presentAlert();
-    this.respuestaUsuario = "";
-    console.log(this.id);
+    this.respuestaUsuario = ""
+    this.numAciertos = 0
+    this.respuestaService.getAllRespuestas().subscribe(
+      data=>{
+        this.respuestas=data
+        console.log(this.respuestas)
+        for(let respuesta of this.respuestas){
+            if(respuesta.esVerdadera &&  respuesta.pregunta.tipoJuego.id==2){
+                this.respuestasCorrectas.push(respuesta)
+                console.log(this.respuestasCorrectas)
+            }
+        }
+      }
+    )
 
   }
+
   ngOnInit() {
     this.ultima = false;
     this.cargarPreguntas();
@@ -75,31 +92,44 @@ export class QuizPage implements OnInit {
     }, 1000);
 
   }
-  
+
   public pasarTiempo(): void {
     this.count--;
   }
-  random(min, max) {
-    return Math.floor((Math.random() * (max - min + 1)) + min);
-  }
+
   terminarJuego() {
     //Para almacenar también el resultado de la última pregunta.
     for (let respuesta of this.respuestasDePregunta) {
       if (respuesta.respuesta == this.respuestaUsuario) {
         if (respuesta.esVerdadera) {
           console.log("correcto")
-         
+          this.numAciertos++
+
         } else console.log("incorrecto")
       }
     }
+    console.log(this.numAciertos)
+      //Se mandan las respuestas acertadas y las preguntas a la página de soluciones
+      let navigationExtras: NavigationExtras = {
+        state: {
+          respuestas: this.respuestasCorrectas,
+          totalAciertos: this.numAciertos
+        
+        }
+      };
+    
+    this.router.navigate(['solucuionesquiz'],navigationExtras);
+
   }
 
   slidechanged() {
     this.respuestasDePregunta = [];
+    //Reinicio de cuenta atrás. 20 segundos por pregunta.
+    clearInterval(this.intervalo);
     //Comprobar en qué slider/pregunta nos encontramos
     this.slides.getActiveIndex().then(id => {
       this.page = id + 1;
-      console.log("ID POSICION " + id)
+      this.cuentaAtras(id);
       this.pregunta = this.preguntas[id];
       console.log(this.pregunta)
       //petición ala API de las respuestas de la pregunta actual
@@ -144,6 +174,7 @@ export class QuizPage implements OnInit {
       if (respuesta.respuesta == this.respuestaUsuario) {
         if (respuesta.esVerdadera) {
           console.log("correcto")
+          this.numAciertos++
         } else console.log("incorrecto")
       }
     }

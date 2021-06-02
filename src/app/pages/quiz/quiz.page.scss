@@ -5,4 +5,20 @@ ion-avatar{
 } 
 ion-avatar img { 
    width: 2500px !important; 
-   height: 400px!important; } 
+   height: 400px!important; 
+  } 
+
+.tiempo{
+    color:#ffc409;
+    font-size: 40px;
+    font-family: 'Oswald', sans-serif;
+  }
+
+ion-content{
+  //--background:url('/assets/imagenes/quizcine.jpg') 0 0/100% 100% no-repeat;
+
+
+}
+ion-card{
+  box-shadow: none !important;
+}

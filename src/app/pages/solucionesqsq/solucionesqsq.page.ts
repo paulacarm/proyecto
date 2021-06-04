@@ -34,7 +34,7 @@ export class SolucionesqsqPage implements OnInit {
   acertada:boolean;
 
   //Variable para guardar los puntos que se asginarán a cada logro
-  PUNTOS:number=20;
+  PUNTOS:number;
 
   ultimapregunta:boolean;
   @ViewChild('mySlider') slides: IonSlides;
@@ -144,22 +144,26 @@ export class SolucionesqsqPage implements OnInit {
     }
 
     for(let pregunta of this.preguntasAcertadas){
+      if(pregunta.dificultad.nombre=='Facil'){
+        this.PUNTOS=20
+        console.log("facil",this.PUNTOS)
+      }
+      if(pregunta.dificultad.nombre=='Medio'){
+        this.PUNTOS=30
+        console.log("medio",this.PUNTOS)
+      }
+      if(pregunta.dificultad.nombre=='Difícil'){
+        this.PUNTOS=40
+      }
+    
       this.ul=new UsuarioLogro(this.usuario,pregunta.logro,this.PUNTOS);
       this.usuarioLogroService.actualizarLogro(this.ul,this.usuario.id,pregunta.logro.id_logro).subscribe(
         data=>{
           console.log(data)
         }
       )
-    }            
-    
-  
-     /* this.usuarioLogroService.postLogro(this.ul).subscribe(
-        data=>{
-          console.log(data)
-        },error=>{
-    
-
-    })*/
+    }   
+    this.PUNTOS=0         
   }
 
 saltar(){
@@ -188,16 +192,6 @@ async abandonarAlert() {
     this.slides.getActiveIndex().then(id => {
       console.log('your index', id)
     })
-
-   /* for (let respuesta of this.respuestasDePregunta) {
-      if (respuesta.esVerdadera) {
-        this.respuesta = respuesta;
-        console.log(this.respuesta)
-      }
-
-      this.respuestasDePregunta = null;
-     
-    }*/
     this.slides.slideNext();
   }
 }

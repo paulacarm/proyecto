@@ -2,12 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { TiposJuego } from '../modelo/tipoJuego';
+import { service } from './service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TipoJuegoService {
-  url='http://localhost:8080/api/tiposdejuego';
+  url=service.URL_BASE+ 'api/tiposdejuego';
   constructor(private http: HttpClient) { }
 
   public getAlltiposJuego():Observable<TiposJuego[]>{

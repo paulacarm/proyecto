@@ -9,7 +9,8 @@
         <ion-card-header >
           <center><ion-avatar ><ion-img  src="{{pregunta.imagen}}"></ion-img></ion-avatar></center>
          <p><ion-icon class="icon" *ngIf="acertada" style="color:green "name="checkmark-outline"></ion-icon></p> 
-         <p  *ngIf="acertada">+20 puntos en {{pregunta.logro.nombre}}</p> 
+         <p  *ngIf="acertada">+{{PUNTOS}} puntos en {{pregunta.logro.nombre}}</p> 
+         <p>{{pregunta.dificultad.nombre}}</p> 
          <p> <ion-icon class="icon" *ngIf="!acertada"  style="color:red"name="close-outline"></ion-icon></p>
           <ion-card-title style="font-size: large;;margin-top: 10px;"> <p text-center style="color:#ffc409;">Respuesta correcta:</p>{{respuesta.respuesta}}</ion-card-title>
         </ion-card-header>

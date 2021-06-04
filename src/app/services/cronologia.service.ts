@@ -2,13 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Cronologia } from '../modelo/cronologia';
+import { service } from './service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CronologiaService {
 
-  url='http://localhost:8080/api/cronologia/';
+  url=service.URL_BASE+'api/cronologia/';
   constructor(private http: HttpClient) { }
 
 

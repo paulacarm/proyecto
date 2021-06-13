@@ -25,13 +25,14 @@ export class PerfilPage implements OnInit {
   ul:UsuarioLogro;
   constructor(  private tokenService:TokenService,
     private usuarioService:AuthService,
-    private usuarioLogroService: UsuarioLogroService,private logroService:LogroService) { }
+    private usuarioLogroService: UsuarioLogroService,private logroService:LogroService) {
+     
+     }
 
   ngOnInit() {
     this.logroService.getAllLogros().subscribe(
       data=>{
         this.logros=data;
-        console.log(data)
       }
     )
     
@@ -39,35 +40,28 @@ export class PerfilPage implements OnInit {
   }
   
   ionViewWillEnter(){
-    this.testLogged();
+   this.testLogged();
   
 }
   testLogged():void{
-    console.log("usuario en perfil")
+  
     this.isLogged=this.tokenService.getToken()!=null;
     this.UserName=this.tokenService.getUsername();
     this.isAdmin=this.tokenService.getAuthorities().length>1;
     this.usuarioService.getUsuarioxNombre(this.UserName).subscribe(
       data=>{
         this.usuario=data;
-        console.log("usuario en perfil")
-      console.log(this.usuario)
-
-
+        console.log(this.usuario)
       this.usuarioLogroService.getLogrosUsuario(this.usuario.id).subscribe(
         data=>{
           this.logrosusuarios=data;
-          console.log(data);
+      
         if(this.logrosusuarios.length==0){
       for(let logro of this.logros){
           this.ul  =new UsuarioLogro(this.usuario,logro,0);
             this.usuarioLogroService.postLogro(this.ul).subscribe(
-              data=>{
-                console.log(data);
-              }
-            )
-      
-            }
+              data=>{})  
+             }
         }
         }
       );

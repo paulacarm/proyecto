@@ -3,21 +3,23 @@
     <ion-text color="primary">
       <h2>Bienvenido {{usuario.nombre}} </h2>
     </ion-text>
-  
+    <ion-item color="primary" lines="none">
+      <ion-icon name="person-outline"></ion-icon>
+      <ion-label>{{usuario.nombreUsuario}}</ion-label>
+    </ion-item>
+    <ion-item color="primary" lines="none">
+      <ion-icon name="mail-outline"></ion-icon>
+      <ion-label>{{usuario.email}}</ion-label>
+    </ion-item>
 
- <ion-item color="primary"  lines="none">
-  <ion-icon  name="person-outline"></ion-icon><ion-label>{{usuario.nombreUsuario}}</ion-label>
-</ion-item>
-<ion-item color="primary" lines="none">
-  <ion-icon name="mail-outline"></ion-icon><ion-label>{{usuario.email}}</ion-label>
-</ion-item>
-
-<ion-item-divider >
-</ion-item-divider>
-
-<ion-item  *ngFor="let logro of logrosusuarios" color="primary" style="margin-top: 20px;">
-  <ion-icon name="trophy-outline"></ion-icon><ion-label>{{logro.logro.nombre}}</ion-label>
-  <ion-icon name="happy-outline"></ion-icon><ion-label> {{logro.puntos}}</ion-label>
-</ion-item>
-</div>
+    <ion-item-divider>
+    </ion-item-divider>
+   <h5>PUNTOS POR CATEGORIA</h5>
+    <ion-item *ngFor="let logro of logrosusuarios" color="primary" style="margin-top: 20px;" lines="none">
+      <ion-icon name="trophy-outline"></ion-icon>
+      <ion-label>{{logro.logro.nombre}}</ion-label>
+      <ion-icon name="happy-outline"></ion-icon>
+      <ion-label> {{logro.puntos}}</ion-label>
+    </ion-item>
+  </div>
 </ion-content>

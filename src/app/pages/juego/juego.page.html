@@ -2,10 +2,10 @@
 
 <ion-content class="content"color="primary" >
 
-  <ion-card *ngFor="let tp of tiposjuego" color="primary">
+  <ion-card *ngFor="let tp of tiposjuego" color="primary" (click)="enviarJuego(tp.id)">
 
     <ion-card-header >
-      <ion-card-title  (click)="enviarJuego(tp.id)" style="color: #f2c703;">{{tp.nombre}}</ion-card-title>
+      <ion-card-title  style="color: #f2c703;">{{tp.nombre}}</ion-card-title>
     </ion-card-header>
     <ion-card-content  >
    <ion-label> {{tp.descripcion}}</ion-label>

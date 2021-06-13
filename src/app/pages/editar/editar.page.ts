@@ -12,7 +12,7 @@ import { RespuestaService } from 'src/app/services/respuesta.service';
   templateUrl: './editar.page.html',
   styleUrls: ['./editar.page.scss'],
 })
-export class EditarPage implements OnInit {
+export class EditarPage  {
 
 
   preguntas: Pregunta[] = [];
@@ -105,8 +105,5 @@ export class EditarPage implements OnInit {
     )
   }
 
-  ngOnInit() {
-
-  }
 
 }

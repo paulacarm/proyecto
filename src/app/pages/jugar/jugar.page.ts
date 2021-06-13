@@ -83,7 +83,6 @@ export class JugarPage implements OnInit {
         if (respuesta.esVerdadera) {
           console.log("correcto")
           this.respuestasVerdaderas.push(respuesta)
-          console.log(this.respuestasVerdaderas);
         } else console.log("incorrecto")
       }
     }
@@ -119,8 +118,6 @@ export class JugarPage implements OnInit {
         } while (this.preguntasDesordenadas.length != this.NUMERO_PREGUNTAS + 1)
         //Solo para la primera pregunta, se le asignan sus respuestas
         this.pregunta = this.preguntasDesordenadas[0];
-        console.log("pimera pregunta")
-        console.log(this.pregunta)
         this.respuestaService.getRespuestasDePregunta(this.pregunta.id).subscribe(
           data => {
             this.respuestasDePregunta = data;
@@ -144,7 +141,6 @@ export class JugarPage implements OnInit {
         data => {
           this.respuestasDePregunta = data;
           this.respuestasCargadas=true;
-          console.log(this.respuestasCargadas);
           //Comprueba si es el último slider/pregunta y si lo es pone ultimaPregunta a true. En la vista aparece botón terminar.
           this.slides.isEnd().then(ultima => {
             if (ultima) {
@@ -163,7 +159,6 @@ export class JugarPage implements OnInit {
         if (respuesta.esVerdadera) {
           console.log("correcto")
           this.respuestasVerdaderas.push(respuesta)
-          console.log(this.respuestasVerdaderas);
         } else console.log("incorrecto")
       }
     }
@@ -176,9 +171,8 @@ export class JugarPage implements OnInit {
     };
   
  
-  
+
     this.router.navigate(['solucionesqsq'], navigationExtras);
-  
   }
 
   //Temporizador para las preguntas. 

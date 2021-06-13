@@ -1,3 +1,3 @@
 export class service{
-    static URL_BASE:String='http://192.168.1.25:8080/';
+    static URL_BASE='http://pve.iesjulioverne.es:52000/';
 }

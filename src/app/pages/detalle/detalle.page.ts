@@ -29,6 +29,7 @@ export class DetallePage implements OnInit {
   logroSeleccionado:Logro;
   respuestaNueva:string;
   preguntaNueva:string;
+  saberMasNueva: string;
   dificultadSeleccionada:Dificultad;
   cronologiaSeleccionada: Cronologia;
   constructor(private preguntaService:PreguntaService,public ruta: ActivatedRoute,
@@ -82,10 +83,11 @@ export class DetallePage implements OnInit {
           text: 'Okay',
           handler: () => {
             console.log('Confirm Okay');
+          
             let pregunta:Pregunta=new Pregunta(
               this.pregunta.id,
               this.preguntaNueva,
-              this.pregunta.saberMas,
+              this.saberMasNueva,
               this.pregunta.imagen,
               this.dificultadSeleccionada,
               this.cronologiaSeleccionada,

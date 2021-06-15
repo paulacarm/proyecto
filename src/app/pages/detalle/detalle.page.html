@@ -15,8 +15,12 @@
     </ion-card-header>
     <ion-card-content>
       <ion-item>
-         <ion-input [(ngModel)]="preguntaNueva" placeholder="Escribe pregunta modificada"></ion-input>
-      </ion-item>
+        <ion-input [(ngModel)]="preguntaNueva" placeholder="Escribe pregunta modificada"></ion-input>
+     </ion-item>
+      {{pregunta.saberMas}}
+      <ion-item>
+        <ion-input [(ngModel)]="saberMasNueva" placeholder="Escribe información de la pregunta"></ion-input>
+     </ion-item>
      
       <ion-item>
         <ion-label color="warning">Logro</ion-label>

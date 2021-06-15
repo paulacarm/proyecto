@@ -1,6 +1,6 @@
 <ion-content *ngIf="!isLogged" color="primary">
 
-  <div class="content" >
+  <div class="content">
     <ion-img src="../../assets/icon/ig.png" style="height: 200px;margin-top: 40px;"></ion-img>
     <!--Segmento con dos opciones: Iniciar sesión o registrarse-->
     <div class="button-action ion-padding">
@@ -10,7 +10,7 @@
           <ion-icon name="log-in-outline"></ion-icon>
         </ion-segment-button>
         <ion-segment-button value="registro" class="signin-text">
-          <ion-label >Regístrate</ion-label>
+          <ion-label>Regístrate</ion-label>
           <ion-icon name="person-add-outline"></ion-icon>
         </ion-segment-button>
       </ion-segment>
@@ -19,11 +19,12 @@
     <div *ngIf="!registrar">
       <form #f="ngForm" (ngSubmit)="onLogin()" novalidate>
         <div class="ion-padding">
-          <ion-input class="sinbordefondo" placeholder="Nombre de usuario" name="nombreUsuario" [(ngModel)]="nombreUsuario"></ion-input><br>
+          <ion-input class="sinbordefondo" placeholder="Nombre de usuario" name="nombreUsuario"
+            [(ngModel)]="nombreUsuario"></ion-input><br>
           <ion-input placeholder="Contraseña" type="password" name="password" [(ngModel)]="password"></ion-input>
         </div>
         <ion-button class="actionbutton" type="submit" expand="full" fill="clear" style="text-transform: none;"
-          [disabled]="!f.valid"><b>Iniciar sesion</b>
+          [disabled]="!f.valid"><b>Iniciar sesión</b>
         </ion-button>
         <!--Botones para reestrablecer la constraseña
         <ion-button fill="clear" style="font-size: small; color:#a8a8a8 ;margin-right: 10px; text-transform: none;">
@@ -37,17 +38,19 @@
     <div *ngIf="registrar">
       <form (ngSubmit)="onRegistrer()" id="form2" name="form2" #form="ngForm" novalidate>
         <div class="ion-padding">
-          <ion-input placeholder="Nombre"name="nuevoUsuarioNombre" [(ngModel)]="nuevoUsuarioNombre"></ion-input><br>
-          <ion-input placeholder="Nombre de usuario" name="nuevoUsuarioNombreUsuario" [(ngModel)]="nuevoUsuarioNombreUsuario"></ion-input> <br>
-          <ion-input placeholder="Email"name="nuevoUsuarioEmail" [(ngModel)]="nuevoUsuarioEmail"></ion-input><br>
-          <ion-input placeholder="Contraseña" type="password"name="nuevoUsuariopassword"[(ngModel)]="nuevoUsuariopassword"></ion-input>
+          <ion-input placeholder="Nombre" name="nuevoUsuarioNombre" [(ngModel)]="nuevoUsuarioNombre"></ion-input><br>
+          <ion-input placeholder="Nombre de usuario" name="nuevoUsuarioNombreUsuario"
+            [(ngModel)]="nuevoUsuarioNombreUsuario"></ion-input> <br>
+          <ion-input placeholder="Email" name="nuevoUsuarioEmail" [(ngModel)]="nuevoUsuarioEmail"></ion-input><br>
+          <ion-input placeholder="Contraseña" type="password" name="nuevoUsuariopassword"
+            [(ngModel)]="nuevoUsuariopassword"></ion-input>
         </div>
         <ion-button class="actionbutton" type="submit" expand="full" fill="clear" style="text-transform: none;">
-          <b>Registrarme</b>
+          <b>Registrarse</b>
         </ion-button>
       </form>
     </div>
- 
+
     <!--Fin vista para registro-->
 
     <!--Botones para inicio de sesion con redes sociales(Siempre visible)

@@ -19,54 +19,54 @@ import { RespuestaService } from 'src/app/services/respuesta.service';
   styleUrls: ['./detalle.page.scss'],
 })
 export class DetallePage implements OnInit {
-  pregunta:Pregunta;
-  respuestas:Respuesta[]=[];
-  id:number;
-  editar:boolean;
-  logros:Logro[]=[];
-  dificultades:Dificultad[]=[];
-  cronologias:Cronologia[]=[];
-  logroSeleccionado:Logro;
-  respuestaNueva:string;
-  preguntaNueva:string;
+  pregunta: Pregunta;
+  respuestas: Respuesta[] = [];
+  id: number;
+  editar: boolean;
+  logros: Logro[] = [];
+  dificultades: Dificultad[] = [];
+  cronologias: Cronologia[] = [];
+  logroSeleccionado: Logro;
+  respuestaNueva: string;
+  preguntaNueva: string;
   saberMasNueva: string;
-  dificultadSeleccionada:Dificultad;
+  dificultadSeleccionada: Dificultad;
   cronologiaSeleccionada: Cronologia;
-  constructor(private preguntaService:PreguntaService,public ruta: ActivatedRoute,
-    private respuestaService:RespuestaService,public router:Router,
-    private logroService:LogroService,
-    private dificultadService:DificultadService,
+  constructor(private preguntaService: PreguntaService, public ruta: ActivatedRoute,
+    private respuestaService: RespuestaService, public router: Router,
+    private logroService: LogroService,
+    private dificultadService: DificultadService,
     private cronologiaService: CronologiaService,
     public alertController: AlertController) {
     //this.id = this.ruta.snapshot.params.id;
-   // console.log(this.id)
+    // console.log(this.id)
     this.pregunta = this.router.getCurrentNavigation().extras.state.pregunta;
     console.log("pregunta que recibo:")
     console.log(this.pregunta);
     this.logroService.getAllLogros().subscribe(
-      data=>{
-        this.logros=data;
+      data => {
+        this.logros = data;
         console.log(this.logros);
       }
     )
 
     this.dificultadService.getAllDificultades().subscribe(
-      data=>{
-        this.dificultades=data;
+      data => {
+        this.dificultades = data;
         console.log(this.dificultades);
 
       }
     )
 
-      this.cronologiaService.getAllCronologias().subscribe(
-        data=>{
-          this.cronologias=data;
-          console.log(this.cronologias);
-        }
-      )
+    this.cronologiaService.getAllCronologias().subscribe(
+      data => {
+        this.cronologias = data;
+        console.log(this.cronologias);
+      }
+    )
 
-   }
-   async presentAlertConfirm() {
+  }
+  async presentAlertConfirm() {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
       header: 'Modificar pregunta',
@@ -83,8 +83,8 @@ export class DetallePage implements OnInit {
           text: 'Okay',
           handler: () => {
             console.log('Confirm Okay');
-          
-            let pregunta:Pregunta=new Pregunta(
+
+            let pregunta: Pregunta = new Pregunta(
               this.pregunta.id,
               this.preguntaNueva,
               this.saberMasNueva,
@@ -94,8 +94,8 @@ export class DetallePage implements OnInit {
               this.pregunta.tipoJuego,
               this.logroSeleccionado
             )
-            this.preguntaService.modificarPregunta(pregunta,pregunta.id).subscribe(
-              data=>{
+            this.preguntaService.modificarPregunta(pregunta, pregunta.id).subscribe(
+              data => {
                 console.log(data);
                 console.log(pregunta)
               }
@@ -113,54 +113,54 @@ export class DetallePage implements OnInit {
   ngOnInit() {
     this.cargarPregunta();
   }
-  ionViewWillEnter(){
+  ionViewWillEnter() {
     this.respuestaService.getRespuestasDePregunta(this.pregunta.id).subscribe(
-      data=>{
-        this.respuestas=data;
+      data => {
+        this.respuestas = data;
       }
     )
   }
-  guardarCambios(){
-    if(this.logroSeleccionado==null){
-      this.logroSeleccionado=this.pregunta.logro;
+  guardarCambios() {
+    if (this.logroSeleccionado == null) {
+      this.logroSeleccionado = this.pregunta.logro;
       console.log(this.logroSeleccionado)
       console.log("no has seleccionado ningun logro")
     }
-    if(this.preguntaNueva==null){
-      this.preguntaNueva=this.pregunta.pregunta;
+    if (this.preguntaNueva == null) {
+      this.preguntaNueva = this.pregunta.pregunta;
       console.log(this.preguntaNueva)
       console.log("no has escrito ninguna pregunta")
     }
 
-    if(this.dificultadSeleccionada==null){
-      this.dificultadSeleccionada=this.pregunta.dificultad;
+    if (this.dificultadSeleccionada == null) {
+      this.dificultadSeleccionada = this.pregunta.dificultad;
       console.log(this.dificultadSeleccionada)
       console.log("no has seleccionado ninguna dificultad")
     }
-    
-    if(this.cronologiaSeleccionada==null){
-      this.cronologiaSeleccionada=this.pregunta.cronologia;
+
+    if (this.cronologiaSeleccionada == null) {
+      this.cronologiaSeleccionada = this.pregunta.cronologia;
       console.log(this.cronologiaSeleccionada)
       console.log("no has seleccionado ninguna cronologia")
     }
-this.presentAlertConfirm();
-    
+    this.presentAlertConfirm();
+
   }
-  ModificarRespuesta(respuesta:Respuesta){
+  ModificarRespuesta(respuesta: Respuesta) {
     let navigationExtras: NavigationExtras = {
       state: {
-       respuesta:respuesta
+        respuesta: respuesta
       }
     };
 
- this.router.navigate(['editar-respuesta'],navigationExtras);
-  
+    this.router.navigate(['editar-respuesta'], navigationExtras);
+
   }
 
-  cargarPregunta(){
+  cargarPregunta() {
     this.respuestaService.getRespuestasDePregunta(this.pregunta.id).subscribe(
-      data=>{
-        this.respuestas=data;
+      data => {
+        this.respuestas = data;
       }
     )
   }

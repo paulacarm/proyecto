@@ -20,7 +20,7 @@ export class SolucionesqsqPage implements OnInit {
   ul: UsuarioLogro;
   //variable para almacenar las respuestas de cada pregunta y poder mostrarlar
   public respuestasDePregunta: Respuesta[] = [];
-   //variable para almacenar las preguntas acertadas
+  //variable para almacenar las preguntas acertadas
   preguntasAcertadas: Pregunta[] = [];
   //variable para almacenar las respuestas del usuario
   respuestas: Respuesta[];
@@ -34,7 +34,7 @@ export class SolucionesqsqPage implements OnInit {
   usuario: Usuario;
   //varbiable para guardar el nombre de usuario
   userName: String;
-//varbiable para saber si la pregunta que muestra el slider ha sido acertada o no (se muetra en la vista)
+  //varbiable para saber si la pregunta que muestra el slider ha sido acertada o no (se muetra en la vista)
   acertada: boolean;
   //Variable para guardar los puntos que se asginarán a cada logro según la dificultad
   PUNTOS: number = 0;
@@ -97,7 +97,7 @@ export class SolucionesqsqPage implements OnInit {
 
 
   slidechanged() {
-//cada vez que se cambia de slider se le guarda la pregunta y se asigna la respuesta correcta
+    //cada vez que se cambia de slider se le guarda la pregunta y se asigna la respuesta correcta
     this.acertada = false;
     this.slides.getActiveIndex().then(id => {
       console.log('your index', id)
@@ -126,7 +126,7 @@ export class SolucionesqsqPage implements OnInit {
   }
 
   asignarPuntosUsuario() {
-//se asignan unos puntos según el nivel de dificultad de la pregunta y se guarda en la base de datos(donde se suma alos puntos que ya tenía)
+    //se asignan unos puntos según el nivel de dificultad de la pregunta y se guarda en la base de datos(donde se suma alos puntos que ya tenía)
     for (let pregunta of this.preguntasAcertadas) {
       switch (pregunta.dificultad.nombre) {
         case 'Fácil': {

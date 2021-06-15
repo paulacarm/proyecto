@@ -26,7 +26,7 @@ export class QuizPage implements OnInit {
   private ultima: boolean
   public respuestaUsuario: String;
   private numAciertos: number
-  private respuestas:Respuesta[] =[]
+  private respuestas: Respuesta[] = []
   private respuestasCorrectas: Respuesta[] = []
 
 
@@ -38,14 +38,14 @@ export class QuizPage implements OnInit {
     this.respuestaUsuario = ""
     this.numAciertos = 0
     this.respuestaService.getAllRespuestas().subscribe(
-      data=>{
-        this.respuestas=data
+      data => {
+        this.respuestas = data
         console.log(this.respuestas)
-        for(let respuesta of this.respuestas){
-            if(respuesta.esVerdadera &&  respuesta.pregunta.tipoJuego.id==2){
-                this.respuestasCorrectas.push(respuesta)
-                console.log(this.respuestasCorrectas)
-            }
+        for (let respuesta of this.respuestas) {
+          if (respuesta.esVerdadera && respuesta.pregunta.tipoJuego.id == 2) {
+            this.respuestasCorrectas.push(respuesta)
+            console.log(this.respuestasCorrectas)
+          }
         }
       }
     )
@@ -109,16 +109,16 @@ export class QuizPage implements OnInit {
       }
     }
     console.log(this.numAciertos)
-      //Se mandan las respuestas acertadas y las preguntas a la página de soluciones
-      let navigationExtras: NavigationExtras = {
-        state: {
-          respuestas: this.respuestasCorrectas,
-          totalAciertos: this.numAciertos
-        
-        }
-      };
-    
-    this.router.navigate(['solucuionesquiz'],navigationExtras);
+    //Se mandan las respuestas acertadas y las preguntas a la página de soluciones
+    let navigationExtras: NavigationExtras = {
+      state: {
+        respuestas: this.respuestasCorrectas,
+        totalAciertos: this.numAciertos
+
+      }
+    };
+
+    this.router.navigate(['solucuionesquiz'], navigationExtras);
 
   }
 
